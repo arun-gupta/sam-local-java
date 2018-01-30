@@ -18,8 +18,8 @@ public class DDBUtil {
 		
 		String region = System.getProperty("DYNAMODB_REGION");
 		if (null == region) {
-			System.err.println("Region not set, default \"" + Regions.US_WEST_1.name() + "\" is used");
-			region = Regions.US_WEST_1.name();
+			System.err.println("Region not set, default \"" + Regions.US_EAST_1.name() + "\" is used");
+			region = Regions.US_EAST_1.name();
 		}
 		System.out.println("DynamoDB region: " + region);
 		
