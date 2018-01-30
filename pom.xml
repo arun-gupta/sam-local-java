@@ -8,7 +8,7 @@
 	<packaging>jar</packaging>
 
 	<properties>
-		<DYNAMODB_REGION>us-west-1</DYNAMODB_REGION>
+		<DYNAMODB_REGION>us-east-1</DYNAMODB_REGION>
 	</properties>
 
 	<dependencies>
