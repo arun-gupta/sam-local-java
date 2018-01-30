@@ -9,6 +9,7 @@ import com.amazonaws.services.lambda.runtime.RequestHandler;
  */
 public class BookPostHandler implements RequestHandler<Book, String> {
     public String handleRequest(Book book, Context context) {
+        System.out.println("Adding book: " + book);
         DynamoDBMapper mapper = new DynamoDBMapper(DDBUtil.getClient());
 //        Book book = new Book("1", "Minecraft Modding with Forge", "1234", "29.99");
         mapper.save(book);
