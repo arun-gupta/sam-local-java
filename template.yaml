@@ -19,10 +19,10 @@ Resources:
             Path: /books/{bookId}
             Method: get
 
-  PutFunction:
+  PostFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: org.sample.aws.samlocal.BookGetHandler
+      Handler: org.sample.aws.samlocal.BookPostHandler
       Runtime: java8
 #      CodeUri: s3://aws-sam-local/books.zip
       CodeUri: ./target/sam-local-java-1.0-SNAPSHOT.jar
@@ -35,7 +35,7 @@ Resources:
           Type: Api
           Properties:
             Path: /books
-            Method: put
+            Method: post
 
 #  DeleteFunction:
 #    Type: AWS::Serverless::Function
