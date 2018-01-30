@@ -5,12 +5,17 @@
 . Create the JAR file: `mvn package shade:shade`
 . Install SAM Local: `npm install -g aws-sam-local`
 . Create DynamoDB table: `??`
-. Test locally: `echo '{ "id": "1", "name": "minecraft" }' | sam local invoke PutFunction`
+. Test locally
+.. Create a new book: `echo '{ "id": "1", "name": "minecraft" }' | sam local invoke PostFunction`
+.. Get all books: `sam local generate-event api --method "GET" --path "/books" --body "1" | sam local invoke GetFunction`
 
 == Deploy Code to AWS
 
 . Create S3 bucket: `aws s3api create-bucket --bucket aws-sam-local --region us-east-1`
 . Package: `sam package --template template.yaml --s3-bucket aws-sam-local --output-template-file packaged.yaml`
 . Deploy: `sam deploy --template packaged.yaml --stack-name books --capabilities CAPABILITY_IAM`
-
+. Create API Gateway: `??`
+. Test
+.. Create a new book: curl -d "" http://host:port/books
+.. Get all books: curl http://host:port/books
 
