@@ -9,6 +9,7 @@ Resources:
       Runtime: java8
       CodeUri: ./target/sam-local-java-1.0-SNAPSHOT.jar
       Policies: AmazonDynamoDBReadOnlyAccess
+      Timeout: 30
       Environment:
         Variables:
           TABLE_NAME: !Ref Table
@@ -27,6 +28,7 @@ Resources:
 #      CodeUri: s3://aws-sam-local/books.zip
       CodeUri: ./target/sam-local-java-1.0-SNAPSHOT.jar
       Policies: AmazonDynamoDBFullAccess
+      Timeout: 30
       Environment:
         Variables:
           TABLE_NAME: !Ref Table

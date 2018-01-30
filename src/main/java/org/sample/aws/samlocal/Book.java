@@ -7,7 +7,6 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 /**
  * @author arungupta
  */
-@DynamoDBTable(tableName = "Books")
 public class Book {
 
 	private String id;
