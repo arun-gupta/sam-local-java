@@ -12,6 +12,13 @@
 	</properties>
 
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-lambda-java-core -->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-lambda-java-core</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-dynamodb -->
 		<dependency>
 			<groupId>com.amazonaws</groupId>
@@ -35,7 +42,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>org.sample.aws.samlocal.App</mainClass>
+					<mainClass>org.sample.aws.samlocal.DDBUtil</mainClass>
 					<systemProperties>
 						<systemProperty>
 							<key>DYNAMODB_REGION</key>

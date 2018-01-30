@@ -8,19 +8,11 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 /**
  * @author arungupta
  */
-public class App {
+public class DDBUtil {
 
-	public static void main(String[] args) {
-		App app = new App();
-		app.createBook();
-		System.out.println("JSON document stored");
-		Book book = app.getBook();
-		System.out.println("Found document: " + book);
-	}
-	
 	private static AmazonDynamoDB dynamodbClient;
 	
-	private static AmazonDynamoDB getClient() {
+	public static AmazonDynamoDB getClient() {
 		if (null != dynamodbClient)
 			return dynamodbClient;
 		
@@ -37,16 +29,4 @@ public class App {
 		
 		return dynamodbClient;
 	}
-	
-	private void createBook() {
-		DynamoDBMapper mapper = new DynamoDBMapper(getClient());
-		Book book = new Book("1", "Minecraft Modding with Forge", "1234", "29.99");
-		mapper.save(book);
-	}
-	
-	private Book getBook() {
-		DynamoDBMapper mapper = new DynamoDBMapper(getClient());
-		return mapper.load(Book.class, "1");
-	}
-	
 }
