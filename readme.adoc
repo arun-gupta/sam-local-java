@@ -1,2 +1,14 @@
 = Serverless Application Model Local and Java Example
 
+== Test Locally
+
+. Install SAM Local: `npm install -g aws-sam-local`
+. Create DynamoDB table: ``
+
+== Deploy Code to AWS
+
+. Create S3 bucket: `aws s3api create-bucket --bucket aws-sam-local --region us-east-1`
+. Package: `sam package --template template.yaml --s3-bucket aws-sam-local --output-template-file packaged.yaml`
+. Deploy: `sam deploy --template ./packaged.yaml --stack-name books --capabilities CAPABILITY_IAM`
+
+
