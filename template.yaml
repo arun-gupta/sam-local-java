@@ -7,7 +7,7 @@ Resources:
     Properties:
       Handler: org.sample.aws.samlocal.BookGetHandler
       Runtime: java8
-      CodeUri: s3://<bucket>/api_backend.zip
+      CodeUri: ./target/sam-local-java-1.0-SNAPSHOT.jar
       Policies: AmazonDynamoDBReadOnlyAccess
       Environment:
         Variables:
@@ -24,7 +24,8 @@ Resources:
     Properties:
       Handler: org.sample.aws.samlocal.BookGetHandler
       Runtime: java8
-      CodeUri: s3://<bucket>/api_backend.zip
+#      CodeUri: s3://aws-sam-local/books.zip
+      CodeUri: ./target/sam-local-java-1.0-SNAPSHOT.jar
       Policies: AmazonDynamoDBFullAccess
       Environment:
         Variables:
@@ -36,43 +37,26 @@ Resources:
             Path: /books
             Method: put
 
-  DeleteFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      Handler: org.sample.aws.samlocal.BookDeleteHandler
-      Runtime: java8
-      CodeUri: s3://<bucket>/api_backend.zip
-      Policies: AmazonDynamoDBFullAccess
-      Environment:
-        Variables:
-          TABLE_NAME: !Ref Table
-      Events:
-        DeleteResource:
-          Type: Api
-          Properties:
-            Path: /books/{bookId}
-            Method: delete
+#  DeleteFunction:
+#    Type: AWS::Serverless::Function
+#    Properties:
+#      Handler: org.sample.aws.samlocal.BookDeleteHandler
+#      Runtime: java8
+#      CodeUri: ./target/sam-local-java-1.0-SNAPSHOT.jar
+#      Policies: AmazonDynamoDBFullAccess
+#      Environment:
+#        Variables:
+#          TABLE_NAME: !Ref Table
+#      Events:
+#        DeleteResource:
+#          Type: Api
+#          Properties:
+#            Path: /books/{bookId}
+#            Method: delete
 
   Table:
-    Type: AWS::Serverless::BookTable
-
-  BookTable:
-    Type: AWS::DynamoDB::Table
+    Type: AWS::Serverless::SimpleTable
     Properties:
-      AttributeDefinitions:
-        -
-          AttributeName: "id"
-          AttributeType: "S"
-        -
-          AttributeName: "name"
-          AttributeType: "S"
-        -
-          AttributeName: "isbn"
-          AttributeType: "S"
-        -
-          AttributeName: "cost"
-          AttributeType: "S"
-      KeySchema:
-        -
-          AttributeName: "id"
-          KeyType: "HASH"
+      PrimaryKey:
+        Name: id
+        Type: String
