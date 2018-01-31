@@ -10,6 +10,10 @@ public class BookGetHandler implements RequestHandler<String, Book> {
 
     public Book handleRequest(String key, Context context) {
         System.out.println("Key: " + key);
+        return getBook(key);
+    }
+
+    private Book getBook(String key) {
         return DDBUtil.getMapper().load(Book.class, key);
     }
 }
