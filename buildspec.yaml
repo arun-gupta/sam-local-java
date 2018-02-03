@@ -3,9 +3,8 @@ phases:
   install:
     commands:
       - mvn package
-      - aws cloudformation package --template-file template.yaml --s3-bucket sam-local-java
-                                   --output-template-file packaged.yaml
+      - aws cloudformation package --template-file template.yaml --s3-bucket sam-local-java --output-template-file template-export.yaml
 artifacts:
   type: zip
   files:
-    - packaged.yaml
+    - template-export.yaml
