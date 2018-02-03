@@ -39,23 +39,6 @@ Resources:
             Path: /books
             Method: post
 
-#  DeleteFunction:
-#    Type: AWS::Serverless::Function
-#    Properties:
-#      Handler: org.sample.aws.samlocal.BookDeleteHandler
-#      Runtime: java8
-#      CodeUri: ./target/sam-local-java-1.0-SNAPSHOT.jar
-#      Policies: AmazonDynamoDBFullAccess
-#      Environment:
-#        Variables:
-#          TABLE_NAME: !Ref Table
-#      Events:
-#        DeleteResource:
-#          Type: Api
-#          Properties:
-#            Path: /books/{bookId}
-#            Method: delete
-
   Table:
     Type: AWS::Serverless::SimpleTable
     Properties:
